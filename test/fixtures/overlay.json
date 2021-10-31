@@ -1,0 +1,23 @@
+{
+  "sources": {
+    "tiles_e1fed406800ae84e66c7d240a07f8613_8": {
+      "type": "vector",
+      "tiles": [
+        "https://my-swarm.map.ir/tile/layers/23707c92-33ad-4527-b1d1-2558b46b319a@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+      ]
+    }
+  },
+  "layers": [
+    {
+      "id": "23707c92-33ad-4527-b1d1-2558b46b319a",
+      "source": "tiles_e1fed406800ae84e66c7d240a07f8613_8",
+      "source-layer": "تهران",
+      "type": "fill",
+      "paint": {
+        "fill-outline-color": "#2E0767",
+        "fill-color": "#E71566",
+        "fill-opacity": 0.1
+      }
+    }
+  ]
+}
