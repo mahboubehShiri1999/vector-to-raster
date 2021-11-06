@@ -5,7 +5,7 @@ var sharp = require('sharp');
 var axios = require("axios");
 var overlay = require('./test/fixtures/overlay.json');
 
-console.log(overlay)
+// console.log(overlay)
 const express = require('express');
 const app = express();
 
@@ -21,8 +21,9 @@ var config = {
 
 var options = {
     request: function (req, callback) {
-        console.log("🚀 ~ file: index2.js ~ line 8 ~ req", JSON.stringify(req));
+       // console.log("🚀 ~ file: index2.js ~ line 8 ~ req", JSON.stringify(req));
         config.url = req.url;
+        console.log('llllll',config.url)
         axios(config)
             .then(function (response) {
                 const data = Buffer.from(response.data, "binary");
@@ -54,7 +55,7 @@ function getImage(callback, z, lon, lat, w, h, s) {
         map.addSource(id, sourceData);
         console.log('source added')
     });
-    console.log(Object.entries(overlay.layers))
+    // console.log(Object.entries(overlay.layers))
 
     overlay.layers.forEach(layer => {
         delete layer.minzoom
@@ -62,10 +63,10 @@ function getImage(callback, z, lon, lat, w, h, s) {
         console.log('layer added')
     });
 
-    console.log('before render')
+    // console.log('before render')
 
     map.render({zoom: z,center:[lon,lat],width:w, height:h}, function (err, buffer) {
-        console.log('render')
+        // console.log('render')
         if (err) throw err;
         const image = sharp(buffer, {
             raw: {
