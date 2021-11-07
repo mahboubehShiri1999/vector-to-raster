@@ -18,11 +18,11 @@
     "buffer-image": "^1.0.0",
     "express": "^4.17.1",
     "image-conversion": "^2.1.1",
+    "mbgl-components": "^0.5.2",
+    "mbgl-renderer": "^0.7.2",
     "pngjs": "^6.0.0",
     "sharp": "^0.28.3",
     "stream": "0.0.2"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.14"
-  }
+  "devDependencies": {}
 }
