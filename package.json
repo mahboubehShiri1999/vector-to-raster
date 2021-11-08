@@ -21,6 +21,7 @@
     "image-conversion": "^2.1.1",
     "mbgl-components": "^0.5.2",
     "mbgl-renderer": "^0.7.2",
+    "nodemon": "^2.0.14",
     "path": "^0.12.7",
     "pngjs": "^6.0.0",
     "sharp": "^0.28.3",
