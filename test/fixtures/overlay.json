@@ -1,22 +1,43 @@
 {
   "sources": {
-    "tiles_e1fed406800ae84e66c7d240a07f8613_8": {
+    "tiles_c5167d7b0fc64e6b4b90f47fe0b27834_3": {
       "type": "vector",
       "tiles": [
-        "https://my-swarm.map.ir/tile/layers/23707c92-33ad-4527-b1d1-2558b46b319a@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+        "https://my-dev.map.ir/tile/layers/348faa5a-1ec6-46f4-abfe-922b271a58f7@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
       ]
     }
   },
   "layers": [
     {
-      "id": "23707c92-33ad-4527-b1d1-2558b46b319a",
-      "source": "tiles_e1fed406800ae84e66c7d240a07f8613_8",
-      "source-layer": "تهران",
-      "type": "fill",
+      "id": "348faa5a-1ec6-46f4-abfe-922b271a58f7",
+      "type": "symbol",
+      "source": "tiles_c5167d7b0fc64e6b4b90f47fe0b27834_3",
+      "source-layer": "نمایش بیمارستان ها 1288",
+      "layout": {
+        "text-offset": [0, 1],
+        "text-size": {
+          "type": "interval",
+          "stops": [
+            [17, 9],
+            [19, 9]
+          ]
+        },
+        "text-font": ["IranSans-Noto"],
+        "symbol-placement": "point",
+        "icon-image": "empty-e71566",
+        "text-field": "{name}",
+        "icon-size": 1,
+        "text-anchor": "top",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": false,
+        "text-allow-overlap": false,
+        "text-ignore-placement": false,
+        "text-max-width": 30,
+        "symbol-spacing": 800
+      },
       "paint": {
-        "fill-outline-color": "#2E0767",
-        "fill-color": "#E71566",
-        "fill-opacity": 0.1
+        "text-color": "#2E0767",
+        "text-translate": [0, 0]
       }
     }
   ]

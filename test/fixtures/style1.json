@@ -5,7 +5,7 @@
     "tiles_e1fed406800ae84e66c7d240a07f8613_8": {
       "type": "vector",
       "tiles": [
-        "https://my-swarm.map.ir/tile/layers/23707c92-33ad-4527-b1d1-2558b46b319a@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+        "https://dev.map.ir/tile/layers/23707c92-33ad-4527-b1d1-2558b46b319a@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
       ]
     }
   },

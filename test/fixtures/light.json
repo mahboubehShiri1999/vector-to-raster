@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "name": "Map.ir Vector XYZ Light",
+  "name": "dev.map.ir Vector XYZ Light",
   "metadata": {},
   "center": [
     51.393,
@@ -12,11 +12,11 @@
   "sources": {
     "group": {
       "type": "vector",
-      "url": "https://map.ir/vector/styles/main/mapir-xyz-group_layer.json"
+      "url": "https://dev.map.ir/vector/styles/main/mapir-xyz-group_layer.json"
     }
   },
-  "sprite": "https://map.ir/vector/styles/main/sprite",
-  "glyphs": "https://map.ir/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
+  "sprite": "https://dev.map.ir/vector/styles/main/sprite",
+  "glyphs": "https://dev.dev.map.ir/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
