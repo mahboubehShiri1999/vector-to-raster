@@ -12,11 +12,11 @@
   "sources": {
     "group": {
       "type": "vector",
-      "url": "https://map.ir/vector/styles/main/mapir-xyz-group_layer.json"
+      "url": "https://dev.map.ir/vector/styles/main/mapir-xyz-group_layer.json"
     }
   },
-  "sprite": "https://map.ir/vector/styles/main/sprite",
-  "glyphs": "https://map.ir/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
+  "sprite": "https://dev.map.ir/vector/styles/main/sprite",
+  "glyphs": "https://dev.map.ir/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -15797,7 +15797,7 @@
   "created": "2018-11-24T10:00:57.017Z",
   "id": "cjovab1r7apq22sl8xzlw5du3",
   "modified": "2020-07-06",
-  "owner": "Map.ir",
+  "owner": "dev.map.ir",
   "visibility": "private",
   "draft": false
 }
