@@ -102,6 +102,7 @@ app.get('/:z/:lon/:lat', (req, res) => {
             }, req.params.z, req.params.lon, req.params.lat, req.query.width, req.query.height, req.query.style)
         })
         .catch(function (error) {
+            console.log('error occurred in tile server')
             res.status(500).send('error')
         });
 
