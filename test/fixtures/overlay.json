@@ -3,7 +3,7 @@
     "tiles_c5167d7b0fc64e6b4b90f47fe0b27834_3": {
       "type": "vector",
       "tiles": [
-        "https://my-dev.map.ir/tile/layers/348faa5a-1ec6-46f4-abfe-922b271a58f7@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+        "https://gnaf-dev.map.ir/share/af830162-fce1-4deb-8ac0-a738a6a7e6f6/api/tile/layers/af830162-fce1-4deb-8ac0-a738a6a7e6f6@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
       ]
     }
   },
@@ -12,32 +12,17 @@
       "id": "348faa5a-1ec6-46f4-abfe-922b271a58f7",
       "type": "symbol",
       "source": "tiles_c5167d7b0fc64e6b4b90f47fe0b27834_3",
-      "source-layer": "نمایش بیمارستان ها 1288",
+      "source-layer": "hostpital_list_1288",
       "layout": {
-        "text-offset": [0, 1],
-        "text-size": {
-          "type": "interval",
-          "stops": [
-            [17, 9],
-            [19, 9]
-          ]
-        },
-        "text-font": ["IranSans-Noto"],
+        "text-offset": [
+          0,
+          1
+        ],
         "symbol-placement": "point",
         "icon-image": "empty-e71566",
         "text-field": "{name}",
         "icon-size": 1,
-        "text-anchor": "top",
-        "icon-allow-overlap": false,
-        "icon-ignore-placement": false,
-        "text-allow-overlap": false,
-        "text-ignore-placement": false,
-        "text-max-width": 30,
         "symbol-spacing": 800
-      },
-      "paint": {
-        "text-color": "#2E0767",
-        "text-translate": [0, 0]
       }
     }
   ]

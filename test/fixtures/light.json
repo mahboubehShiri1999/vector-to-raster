@@ -16,7 +16,7 @@
     }
   },
   "sprite": "https://dev.map.ir/vector/styles/main/sprite",
-  "glyphs": "https://dev.dev.map.ir/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
+  "glyphs": "https://dev.map.ir/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
