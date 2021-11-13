@@ -1,0 +1,32 @@
+image: alpine:latest
+
+services:
+
+stages:
+  - deploy
+
+variables:
+  GIT_STRATEGY: clone
+  GIT_SUBMODULE_STRATEGY: none
+  TRIGGER_TOKEN: $MAPIR_DEVOPS_API_VECTOR_TO_RASTER_TRIGGER_TOKEN
+  TRIGGER_PROJECT_ID: 670
+  TRIGGER_CMD: "curl -X POST -F token=$TRIGGER_TOKEN -F ref=$CI_COMMIT_REF_NAME https://gitlab.shiveh.com/api/v4/projects/$TRIGGER_PROJECT_ID/trigger/pipeline"
+
+before_script:
+  - apk update && apk add curl openssh-client
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan gitlab.shiveh.com > ~/.ssh/known_hosts
+  - chmod 600 ~/.ssh/known_hosts
+  - echo "$GITLAB_SSH_PRIVATE_KEY" > ~/.ssh/id_git_rsa
+  - chmod 600 ~/.ssh/id_git_rsa
+  - echo "$GITLAB_SSH_CONFIG" > ~/.ssh/config
+  - chmod 600 ~/.ssh/config
+
+trigger_1:
+  stage: deploy
+  script:
+    - "eval $TRIGGER_CMD" 
+  only:
+    - master
+    - develop
