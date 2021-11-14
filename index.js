@@ -42,27 +42,27 @@ function getImage(callback, z, lon, lat, w, h, s) {
     map.load(require(`./test/fixtures/${s}.json`));
 
 
-    Object.entries(overlay.sources).forEach((source) => {
-        const [id, sourceData] = source;
-        map.addSource(id, sourceData);
-        console.log('source added')
-    });
-    // console.log(Object.entries(overlay.layers))
-
-    overlay.layers.forEach(layer => {
-        delete layer.minzoom
-        map.addLayer(layer);
-        console.log('layer added')
-    });
+    // Object.entries(overlay.sources).forEach((source) => {
+    //     const [id, sourceData] = source;
+    //     map.addSource(id, sourceData);
+    //     console.log('source added')
+    // });
+    // // console.log(Object.entries(overlay.layers))
+    //
+    // overlay.layers.forEach(layer => {
+    //     delete layer.minzoom
+    //     map.addLayer(layer);
+    //     console.log('layer added')
+    // });
 
 
     // console.log('before render')
-try{
-    map.render({zoom: z, center: [lon, lat], width: w, height: h}, function (err, buffer) {
-            // console.log('render')
-            if (err) throw err;
-            else {
-                try {
+    try {
+        map.render({zoom: z, center: [lon, lat], width: w, height: h}, function (err, buffer) {
+                // console.log('render')
+                if (err) throw err;
+                else {
+                    try {
                     const image = sharp(buffer, {
                         raw: {
                             width: parseInt(w),
@@ -70,11 +70,6 @@ try{
                             channels: 4
                         }
                     })
-                }catch(e){
-                    console.log('sharp')
-                    console.log(e)
-                }
-                try {
                     image.toFile('image.png', function (err) {
                         if (err) {
                             console.log(err)
@@ -82,18 +77,19 @@ try{
                         }
                         callback(buffer)
                     });
-                }catch(e){
-                    console.log('image to file')
-                    console.log(e)
+                    } catch (e) {
+                        console.log('image to file')
+                        console.log(e)
+                    }
+
+
                 }
-
-
             }
-        }
-    );}catch(e){
-    console.log('render')
-    console.log(e)
-}
+        );
+    } catch (e) {
+        console.log('render')
+        console.log(e)
+    }
 
 
 }
