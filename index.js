@@ -4,6 +4,8 @@ var mbgl = require('@mapbox/mapbox-gl-native');
 var sharp = require('sharp');
 var axios = require("axios");
 var overlay = require('./test/fixtures/overlay.json');
+var ov2 = require('./test/fixtures/ov2.json');
+
 const express = require('express');
 
 const app = express();
@@ -12,7 +14,8 @@ var config = {
     method: "get",
     responseType: "arraybuffer",
     headers: {
-        "x-api-key": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjdhNjhmNTI5NWJlNTk2NTAxZWM0NjMwYjI0Y2EzNjU0M2ZhMTZmYWFiNmM5OThkNGEzOWZkMDllMjQ2OTY1OTQyYmYxYTc1NTcxOGM0MGRjIn0.eyJhdWQiOiIxNDYiLCJqdGkiOiI3YTY4ZjUyOTViZTU5NjUwMWVjNDYzMGIyNGNhMzY1NDNmYTE2ZmFhYjZjOTk4ZDRhMzlmZDA5ZTI0Njk2NTk0MmJmMWE3NTU3MThjNDBkYyIsImlhdCI6MTU5ODkzOTg0MCwibmJmIjoxNTk4OTM5ODQwLCJleHAiOjE2MDE2MjE4NDAsInN1YiI6IiIsInNjb3BlcyI6WyJiYXNpYyJdfQ.Qyhr8Ruo6IBvs3jR2GH_b1yq_Q5L60UyziISfgbfkmN7TEG6Jj_9n06j0ChpeXv2HAgmBR2qnyClcuVVZgnssFHnOJ0lC_jRieJrzRtASBgC-6ekOK-82kNXm7CGlRiBujV5TegHweyU7iYv_Y_MA4Oy_SjUfBoVHvpAIawxtgnPnpC-u49vVa-nCCDrO-hr72H1K8yxT-SaFUVP61kz5QR9KCSIxihD0Wac3MlBmiG9nW4TAb120UGb603LkKD-4xRM-ywofbQttWGeF6w8X3XrTT4jqxaIfN4fmlaC7e049kEgcMjKOyiTMcn5KO7_hTAcYneKX8STkox-2X0I-g"
+        "x-api-key": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjdhNjhmNTI5NWJlNTk2NTAxZWM0NjMwYjI0Y2EzNjU0M2ZhMTZmYWFiNmM5OThkNGEzOWZkMDllMjQ2OTY1OTQyYmYxYTc1NTcxOGM0MGRjIn0.eyJhdWQiOiIxNDYiLCJqdGkiOiI3YTY4ZjUyOTViZTU5NjUwMWVjNDYzMGIyNGNhMzY1NDNmYTE2ZmFhYjZjOTk4ZDRhMzlmZDA5ZTI0Njk2NTk0MmJmMWE3NTU3MThjNDBkYyIsImlhdCI6MTU5ODkzOTg0MCwibmJmIjoxNTk4OTM5ODQwLCJleHAiOjE2MDE2MjE4NDAsInN1YiI6IiIsInNjb3BlcyI6WyJiYXNpYyJdfQ.Qyhr8Ruo6IBvs3jR2GH_b1yq_Q5L60UyziISfgbfkmN7TEG6Jj_9n06j0ChpeXv2HAgmBR2qnyClcuVVZgnssFHnOJ0lC_jRieJrzRtASBgC-6ekOK-82kNXm7CGlRiBujV5TegHweyU7iYv_Y_MA4Oy_SjUfBoVHvpAIawxtgnPnpC-u49vVa-nCCDrO-hr72H1K8yxT-SaFUVP61kz5QR9KCSIxihD0Wac3MlBmiG9nW4TAb120UGb603LkKD-4xRM-ywofbQttWGeF6w8X3XrTT4jqxaIfN4fmlaC7e049kEgcMjKOyiTMcn5KO7_hTAcYneKX8STkox-2X0I-g",
+        "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNjYzkzZjQyM2FjMDVjMzc3NWZiOWY5NGY3MmI1NjhkZTEwNWE5ODBlZGU4MDYzZTY1Y2NjNGI4NTFkZDBlMDdkOTU3NzQwMzY2YjM4MGY1In0.eyJhdWQiOiIxIiwianRpIjoiM2NjOTNmNDIzYWMwNWMzNzc1ZmI5Zjk0ZjcyYjU2OGRlMTA1YTk4MGVkZTgwNjNlNjVjY2M0Yjg1MWRkMGUwN2Q5NTc3NDAzNjZiMzgwZjUiLCJpYXQiOjE2MzY4ODg1MTQsIm5iZiI6MTYzNjg4ODUxNCwiZXhwIjoxNjM2ODkyMTE0LCJzdWIiOiI5YmY2NjkyOS0xOWMxLTRiOWUtODFiNS03Y2Y5OThiN2I0YjIiLCJzY29wZXMiOlsiYmFzaWMiLCJteTphZG1pbiJdfQ.BCsEcQyRY9gvdfTanVczVmT77BrpGj-Pp8c7iO4yKP0jCGK7iwG7B9OYRg759E_ljJ-9yVl7QiEsQfoosezXdlXnpPNutudC92TjH4fEelg_DLzDi_ENdRh4VB8-oDnkd_eR0oCbcST3Ysyo-ThkNXdXQwFyG5Ayzuh9BcXAIhKC0__4Rd4C0-6oLYnvhom4Tvu9MkdAwoYDVQxaM8dOIygyUdUUdrQh-VBTby5hnmvCV57orq1W_Cb1uZ-LjX7CQ8HJmAi74OwXIcU8InMyQ43m0OVVxNgAVmtQf04MalRyU73ziEa1cBfINujIQg4eYD-325WECGx19FIKGUC33Q"
     },
 };
 
@@ -59,6 +62,19 @@ function getImage(callback, z, lon, lat, w, h, s) {
     //     console.log('layer added')
     // });
 
+
+    Object.entries(ov2.sources).forEach((source) => {
+        const [id, sourceData] = source;
+        map.addSource(id, sourceData);
+        console.log('source added')
+    });
+    // console.log(Object.entries(overlay.layers))
+
+    ov2.layers.forEach(layer => {
+        delete layer.minzoom
+        map.addLayer(layer);
+        console.log('layer added')
+    });
 
     // console.log('before render')
     try {
