@@ -44,7 +44,7 @@ var map = new mbgl.Map(options);
 function getImage(callback, z, lon, lat, w, h, s) {
 
     map.load(require(`./test/fixtures/${s}.json`));
-console.log('loading map')
+    console.log('loading map')
 
     // Object.entries(overlay.sources).forEach((source) => {
     //     const [id, sourceData] = source;
@@ -62,29 +62,31 @@ console.log('loading map')
 
     // console.log('before render')
     try {
-    console.log('try rendering')
+        console.log('try rendering')
         map.render({zoom: z, center: [lon, lat], width: w, height: h}, function (err, buffer) {
                 // console.log('render')
-                if (err) throw err;
-                else {
+                if (err) {
+                    console.log('render function stopped');
+                    throw err;
+                } else {
                     console.log('render success');
                     try {
                         console.log('image sharp')
-                    const image = sharp(buffer, {
-                        raw: {
-                            width: parseInt(w),
-                            height: parseInt(h),
-                            channels: 4
-                        }
-                    })
+                        const image = sharp(buffer, {
+                            raw: {
+                                width: parseInt(w),
+                                height: parseInt(h),
+                                channels: 4
+                            }
+                        })
                         console.log('make image file')
 
                         image.toFile('image.png', function (err) {
-                        if (err) {
-                            console.log('image to file error')
-                            console.log(err)
-                            throw err;
-                        }
+                            if (err) {
+                                console.log('image to file error')
+                                console.log(err)
+                                throw err;
+                            }
                             console.log('image to file before callback')
 
                             callback(buffer)
@@ -123,13 +125,13 @@ app.get('/:z/:lon/:lat', (req, res) => {
             // })
             //     .then(function (response) {
             //         console.log('ok');
-console.log('call get image')
-            getImage(function (buffer) {
-                // console.log('buffer');
-                // console.log(buffer.toJSON());
-                res.set('Content-Type', `image/png`)
-                res.sendFile(path.join(__dirname, './image.png'))
-            }, req.params.z, req.params.lon, req.params.lat, req.query.width, req.query.height, req.query.style)
+            console.log('call get image')
+        getImage(function (buffer) {
+            // console.log('buffer');
+            // console.log(buffer.toJSON());
+            res.set('Content-Type', `image/png`)
+            res.sendFile(path.join(__dirname, './image.png'))
+        }, req.params.z, req.params.lon, req.params.lat, req.query.width, req.query.height, req.query.style)
         // }
         // )
     } catch (error) {
