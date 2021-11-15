@@ -3,8 +3,7 @@
     "tiles_c5167d7b0fc64e6b4b90f47fe0b27834_3": {
       "type": "vector",
       "tiles": [
-        "https://host/share/af830162-fce1-4deb-8ac0-a738a6a7e6f6/api/tile/layers/af830162-fce1-4deb-8ac0-a738a6a7e6f6@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
-      ]
+        "https://host/share/4addca2f-bf74-4c0e-b856-f784f0e2f561/api/tile/layers/4addca2f-bf74-4c0e-b856-f784f0e2f561@EPSG:3857@pbf/{z}/{y}/{x}.pbf"      ]
     }
   },
   "layers": [
