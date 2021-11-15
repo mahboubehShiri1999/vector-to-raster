@@ -1,10 +1,25 @@
 var fs = require('fs');
+require('dotenv').config();
 var path = require('path');
 var mbgl = require('@mapbox/mapbox-gl-native');
 var sharp = require('sharp');
 var axios = require("axios");
 var overlay = require('./test/fixtures/overlay.json');
-var ov2 = require('./test/fixtures/ov2.json');
+var BASE_LAYER_LINK = process.env.BASE_LAYER_LINK
+var OVERLAY_LINK = process.env.OVERLAY_LINK
+var base_layer = require(`./test/fixtures/min-poi.json`)
+var ov2_layer = require('./test/fixtures/ov2.json');
+
+
+// var base = require(`./test/fixtures/${s}.json`)
+var stringified = JSON.stringify(base_layer);
+stringified = stringified.replace(/host/g, BASE_LAYER_LINK);
+var base = JSON.parse(stringified);
+
+var str = JSON.stringify(overlay);
+str = str.replace('host', OVERLAY_LINK);
+var ov2 = JSON.parse(str);
+
 
 const express = require('express');
 
@@ -14,8 +29,8 @@ var config = {
     method: "get",
     responseType: "arraybuffer",
     headers: {
-        "x-api-key": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjdhNjhmNTI5NWJlNTk2NTAxZWM0NjMwYjI0Y2EzNjU0M2ZhMTZmYWFiNmM5OThkNGEzOWZkMDllMjQ2OTY1OTQyYmYxYTc1NTcxOGM0MGRjIn0.eyJhdWQiOiIxNDYiLCJqdGkiOiI3YTY4ZjUyOTViZTU5NjUwMWVjNDYzMGIyNGNhMzY1NDNmYTE2ZmFhYjZjOTk4ZDRhMzlmZDA5ZTI0Njk2NTk0MmJmMWE3NTU3MThjNDBkYyIsImlhdCI6MTU5ODkzOTg0MCwibmJmIjoxNTk4OTM5ODQwLCJleHAiOjE2MDE2MjE4NDAsInN1YiI6IiIsInNjb3BlcyI6WyJiYXNpYyJdfQ.Qyhr8Ruo6IBvs3jR2GH_b1yq_Q5L60UyziISfgbfkmN7TEG6Jj_9n06j0ChpeXv2HAgmBR2qnyClcuVVZgnssFHnOJ0lC_jRieJrzRtASBgC-6ekOK-82kNXm7CGlRiBujV5TegHweyU7iYv_Y_MA4Oy_SjUfBoVHvpAIawxtgnPnpC-u49vVa-nCCDrO-hr72H1K8yxT-SaFUVP61kz5QR9KCSIxihD0Wac3MlBmiG9nW4TAb120UGb603LkKD-4xRM-ywofbQttWGeF6w8X3XrTT4jqxaIfN4fmlaC7e049kEgcMjKOyiTMcn5KO7_hTAcYneKX8STkox-2X0I-g",
-        "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNjYzkzZjQyM2FjMDVjMzc3NWZiOWY5NGY3MmI1NjhkZTEwNWE5ODBlZGU4MDYzZTY1Y2NjNGI4NTFkZDBlMDdkOTU3NzQwMzY2YjM4MGY1In0.eyJhdWQiOiIxIiwianRpIjoiM2NjOTNmNDIzYWMwNWMzNzc1ZmI5Zjk0ZjcyYjU2OGRlMTA1YTk4MGVkZTgwNjNlNjVjY2M0Yjg1MWRkMGUwN2Q5NTc3NDAzNjZiMzgwZjUiLCJpYXQiOjE2MzY4ODg1MTQsIm5iZiI6MTYzNjg4ODUxNCwiZXhwIjoxNjM2ODkyMTE0LCJzdWIiOiI5YmY2NjkyOS0xOWMxLTRiOWUtODFiNS03Y2Y5OThiN2I0YjIiLCJzY29wZXMiOlsiYmFzaWMiLCJteTphZG1pbiJdfQ.BCsEcQyRY9gvdfTanVczVmT77BrpGj-Pp8c7iO4yKP0jCGK7iwG7B9OYRg759E_ljJ-9yVl7QiEsQfoosezXdlXnpPNutudC92TjH4fEelg_DLzDi_ENdRh4VB8-oDnkd_eR0oCbcST3Ysyo-ThkNXdXQwFyG5Ayzuh9BcXAIhKC0__4Rd4C0-6oLYnvhom4Tvu9MkdAwoYDVQxaM8dOIygyUdUUdrQh-VBTby5hnmvCV57orq1W_Cb1uZ-LjX7CQ8HJmAi74OwXIcU8InMyQ43m0OVVxNgAVmtQf04MalRyU73ziEa1cBfINujIQg4eYD-325WECGx19FIKGUC33Q"
+        "x-api-key": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY0NGNlZWQ3MjNkZDNmZTE0ZDRlYzhlYjY0YjVmMjc2YjAwM2NlZmQ1OTFkMGNjNmEyOWVhMTI3Nzc3NWMwZDNiNDJkYTFlZmNmZDFlZWVlIn0.eyJhdWQiOiI2OTQ1IiwianRpIjoiZjQ0Y2VlZDcyM2RkM2ZlMTRkNGVjOGViNjRiNWYyNzZiMDAzY2VmZDU5MWQwY2M2YTI5ZWExMjc3Nzc1YzBkM2I0MmRhMWVmY2ZkMWVlZWUiLCJpYXQiOjE1ODQ5ODQwOTYsIm5iZiI6MTU4NDk4NDA5NiwiZXhwIjoxNTg2MzY2NDk2LCJzdWIiOiIiLCJzY29wZXMiOlsiYmFzaWMiXX0.oiJxIJIKQ0Z9QgoE3c6MwxvdBLcfUu_-Y2MK5581PhZ5r23L5xkVIvGVpuHyNjJqx4iUpNWXH_qZ68Z5X2c4cviZ-fLuc8wMdNsJAH6F2X0s9fJXVZVwdZhVOpdsgEFB_AE-zhY8FoRGAqLcJqBWUefh7jviQvB_0v_Z-yC8-c8ve95XxS7xQvZLMN3Ca4TTCqXdgLi7KpbAN0i-nTX7xr8Vb3oes92_ZiB9AWnxS8YRKGC7_EIEdkPdqyFhjEu-Lp09ZJ--UxQMjwDPSfX0pTANUd33tMcZ-du4fqM1oiTlZKIJ3g5S2fKGSpDo_5CP_n9zi0lp6eg3NHA--fDDfA",
+        // "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjljYmU1MmRmYTliNjBjNTAxYTQwYjcwOGYwYTg3NjJhNDhkYzc1NWIxMWZjYjAwYzFjNTFlZTJkYWE1ZDE0MjJhMzFkYzY4MTk3ZmY0NGQ2In0.eyJhdWQiOiIxIiwianRpIjoiOWNiZTUyZGZhOWI2MGM1MDFhNDBiNzA4ZjBhODc2MmE0OGRjNzU1YjExZmNiMDBjMWM1MWVlMmRhYTVkMTQyMmEzMWRjNjgxOTdmZjQ0ZDYiLCJpYXQiOjE2MzY5NzA1NTgsIm5iZiI6MTYzNjk3MDU1OCwiZXhwIjoxNjM2OTc0MTU4LCJzdWIiOiI5YmY2NjkyOS0xOWMxLTRiOWUtODFiNS03Y2Y5OThiN2I0YjIiLCJzY29wZXMiOlsiYmFzaWMiLCJteTphZG1pbiJdfQ.q77KRacmIbqeoFL2-951e5AR_d2S-PtVd0aWuMfcHXr_5jwR9492tQAGEBTiC_H682ltQtaNBpRf365JnFDwF8lU3ZkHNtMkgnvvbWo35PVnaQvXSc70c0zXOnHtSLEgz-V9KWC9pv_fsfLN_mcqELTMOTHmleXL1FfN6is7p8qz-VMqtL79S5SrSNmKTeNbWk65Zff46ANypZ51rp2oO7kI3KbMFUEXdwsK_71Ws1KzTgxIEmkg4EowB8gLu3Fmy6vb_IJT1Vhd3JcmMoiRPN42sIUQtXkXetrEICi50lfm5R_ZxQxyhc_ilLc-aFMW2LzGmppD0oCX5rGK805K5A"
     },
 };
 
@@ -44,9 +59,10 @@ var options = {
 var map = new mbgl.Map(options);
 
 
-function getImage(callback, z, lon, lat, w, h, s) {
 
-    map.load(require(`./test/fixtures/${s}.json`));
+
+    function getImage(callback, z, lon, lat, w, h, s) {
+    map.load(base);
     console.log('loading map')
 
     // Object.entries(overlay.sources).forEach((source) => {
