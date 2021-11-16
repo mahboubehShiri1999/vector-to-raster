@@ -4,7 +4,7 @@ var path = require('path');
 var mbgl = require('@mapbox/mapbox-gl-native');
 var sharp = require('sharp');
 var axios = require("axios");
-var overlay = require('./test/fixtures/overlay.json');
+var my_overlay = require('./test/fixtures/overlay.json');
 var BASE_LAYER_LINK = process.env.BASE_LAYER_LINK
 var OVERLAY_LINK = process.env.OVERLAY_LINK
 var base_layer = require(`./test/fixtures/min-poi.json`)
@@ -16,9 +16,9 @@ var stringified = JSON.stringify(base_layer);
 stringified = stringified.replace(/host/g, BASE_LAYER_LINK);
 var base = JSON.parse(stringified);
 
-var str = JSON.stringify(overlay);
+var str = JSON.stringify(my_overlay);
 str = str.replace('host', OVERLAY_LINK);
-var ov2 = JSON.parse(str);
+var overlay = JSON.parse(str);
 
 
 const express = require('express');
@@ -29,7 +29,7 @@ var config = {
     method: "get",
     responseType: "arraybuffer",
     headers: {
-        "x-api-key": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY0NGNlZWQ3MjNkZDNmZTE0ZDRlYzhlYjY0YjVmMjc2YjAwM2NlZmQ1OTFkMGNjNmEyOWVhMTI3Nzc3NWMwZDNiNDJkYTFlZmNmZDFlZWVlIn0.eyJhdWQiOiI2OTQ1IiwianRpIjoiZjQ0Y2VlZDcyM2RkM2ZlMTRkNGVjOGViNjRiNWYyNzZiMDAzY2VmZDU5MWQwY2M2YTI5ZWExMjc3Nzc1YzBkM2I0MmRhMWVmY2ZkMWVlZWUiLCJpYXQiOjE1ODQ5ODQwOTYsIm5iZiI6MTU4NDk4NDA5NiwiZXhwIjoxNTg2MzY2NDk2LCJzdWIiOiIiLCJzY29wZXMiOlsiYmFzaWMiXX0.oiJxIJIKQ0Z9QgoE3c6MwxvdBLcfUu_-Y2MK5581PhZ5r23L5xkVIvGVpuHyNjJqx4iUpNWXH_qZ68Z5X2c4cviZ-fLuc8wMdNsJAH6F2X0s9fJXVZVwdZhVOpdsgEFB_AE-zhY8FoRGAqLcJqBWUefh7jviQvB_0v_Z-yC8-c8ve95XxS7xQvZLMN3Ca4TTCqXdgLi7KpbAN0i-nTX7xr8Vb3oes92_ZiB9AWnxS8YRKGC7_EIEdkPdqyFhjEu-Lp09ZJ--UxQMjwDPSfX0pTANUd33tMcZ-du4fqM1oiTlZKIJ3g5S2fKGSpDo_5CP_n9zi0lp6eg3NHA--fDDfA",
+        "x-api-key": process.env.MAPIR_API_KEY
         // "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjljYmU1MmRmYTliNjBjNTAxYTQwYjcwOGYwYTg3NjJhNDhkYzc1NWIxMWZjYjAwYzFjNTFlZTJkYWE1ZDE0MjJhMzFkYzY4MTk3ZmY0NGQ2In0.eyJhdWQiOiIxIiwianRpIjoiOWNiZTUyZGZhOWI2MGM1MDFhNDBiNzA4ZjBhODc2MmE0OGRjNzU1YjExZmNiMDBjMWM1MWVlMmRhYTVkMTQyMmEzMWRjNjgxOTdmZjQ0ZDYiLCJpYXQiOjE2MzY5NzA1NTgsIm5iZiI6MTYzNjk3MDU1OCwiZXhwIjoxNjM2OTc0MTU4LCJzdWIiOiI5YmY2NjkyOS0xOWMxLTRiOWUtODFiNS03Y2Y5OThiN2I0YjIiLCJzY29wZXMiOlsiYmFzaWMiLCJteTphZG1pbiJdfQ.q77KRacmIbqeoFL2-951e5AR_d2S-PtVd0aWuMfcHXr_5jwR9492tQAGEBTiC_H682ltQtaNBpRf365JnFDwF8lU3ZkHNtMkgnvvbWo35PVnaQvXSc70c0zXOnHtSLEgz-V9KWC9pv_fsfLN_mcqELTMOTHmleXL1FfN6is7p8qz-VMqtL79S5SrSNmKTeNbWk65Zff46ANypZ51rp2oO7kI3KbMFUEXdwsK_71Ws1KzTgxIEmkg4EowB8gLu3Fmy6vb_IJT1Vhd3JcmMoiRPN42sIUQtXkXetrEICi50lfm5R_ZxQxyhc_ilLc-aFMW2LzGmppD0oCX5rGK805K5A"
     },
 };
@@ -65,32 +65,32 @@ var map = new mbgl.Map(options);
     map.load(base);
     console.log('loading map')
 
-    // Object.entries(overlay.sources).forEach((source) => {
-    //     const [id, sourceData] = source;
-    //     map.addSource(id, sourceData);
-    //     console.log('source added')
-    // });
-    // // console.log(Object.entries(overlay.layers))
-    //
-    // overlay.layers.forEach(layer => {
-    //     delete layer.minzoom
-    //     map.addLayer(layer);
-    //     console.log('layer added')
-    // });
-
-
-    Object.entries(ov2.sources).forEach((source) => {
+    Object.entries(overlay.sources).forEach((source) => {
         const [id, sourceData] = source;
         map.addSource(id, sourceData);
         console.log('source added')
     });
     // console.log(Object.entries(overlay.layers))
 
-    ov2.layers.forEach(layer => {
+    overlay.layers.forEach(layer => {
         delete layer.minzoom
         map.addLayer(layer);
         console.log('layer added')
     });
+
+
+    // Object.entries(ov2.sources).forEach((source) => {
+    //     const [id, sourceData] = source;
+    //     map.addSource(id, sourceData);
+    //     console.log('source added')
+    // });
+    // // console.log(Object.entries(overlay.layers))
+    //
+    // ov2.layers.forEach(layer => {
+    //     delete layer.minzoom
+    //     map.addLayer(layer);
+    //     console.log('layer added')
+    // });
 
     // console.log('before render')
     try {

@@ -1,27 +1,74 @@
 {
   "sources": {
-    "tiles_c5167d7b0fc64e6b4b90f47fe0b27834_3": {
+    "parcels": {
       "type": "vector",
       "tiles": [
-        "https://host/share/4addca2f-bf74-4c0e-b856-f784f0e2f561/api/tile/layers/4addca2f-bf74-4c0e-b856-f784f0e2f561@EPSG:3857@pbf/{z}/{y}/{x}.pbf"      ]
+        "host/share/e838832a-9255-4ee6-9f03-e9566f929e9a/api/tile/layers/e838832a-9255-4ee6-9f03-e9566f929e9a@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+      ]
+
     }
   },
   "layers": [
     {
-      "id": "348faa5a-1ec6-46f4-abfe-922b271a58f7",
+      "id": "parcels_l",
+      "source": "parcels",
+      "source-layer": "yazd_parcel_sina_shp",
+      "type": "fill",
+      "paint": {
+        "fill-antialias": true,
+        "fill-color": "#53c5db",
+        "fill-opacity": 0.2
+      }
+    },
+    {
+      "id": "parcels_l-label",
+      "source": "parcels",
+      "source-layer": "yazd_parcel_sina_shp",
       "type": "symbol",
-      "source": "tiles_c5167d7b0fc64e6b4b90f47fe0b27834_3",
-      "source-layer": "hostpital_list_1288",
       "layout": {
         "text-offset": [
           0,
           1
         ],
+        "text-size": {
+          "type": "interval",
+          "stops": [
+            [
+              17,
+              9
+            ],
+            [
+              19,
+              9
+            ]
+          ]
+        },
+        "text-font": [
+          "IranSans-Noto"
+        ],
         "symbol-placement": "point",
-        "icon-image": "empty-e71566",
-        "text-field": "{name}",
+        "text-field": [
+          "number-format",
+          [
+            "get",
+            "plate_no"
+          ],
+          {
+            "locale": "fa-IR"
+          }
+        ],
         "icon-size": 1,
+        "text-anchor": "top",
+        "icon-allow-overlap": false,
+        "text-max-width": 30,
         "symbol-spacing": 800
+      },
+      "paint": {
+        "text-color": "#2E0767",
+        "text-translate": [
+          0,
+          0
+        ]
       }
     }
   ]

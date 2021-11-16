@@ -12,11 +12,11 @@
   "sources": {
     "group": {
       "type": "vector",
-      "url": "https://host/vector/styles/main/mapir-xyz-group_layer.json"
+      "url": "host/vector/styles/main/mapir-xyz-group_layer.json"
     }
   },
-  "sprite": "https://host/vector/styles/main/sprite",
-  "glyphs": "https://host/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
+  "sprite": "host/vector/styles/main/sprite",
+  "glyphs": "host/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",

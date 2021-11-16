@@ -3,7 +3,7 @@
     "tiles_cea9290f176dcddf9324ab7bc3b8196c_4": {
       "type": "vector",
       "tiles": [
-        "https://host/tile/layers/615657c8-808a-4944-b6ef-3e38eadeab74@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+        "host/tile/layers/615657c8-808a-4944-b6ef-3e38eadeab74@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
       ]
     }
   },
