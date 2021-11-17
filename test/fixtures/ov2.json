@@ -1,0 +1,44 @@
+{
+  "sources": {
+    "tiles_cea9290f176dcddf9324ab7bc3b8196c_4": {
+      "type": "vector",
+      "tiles": [
+        "host/tile/layers/615657c8-808a-4944-b6ef-3e38eadeab74@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+      ]
+    }
+  },
+  "layers": [
+    {
+      "id": "615657c8-808a-4944-b6ef-3e38eadeab74",
+      "type": "symbol",
+      "source": "tiles_cea9290f176dcddf9324ab7bc3b8196c_4",
+      "source-layer": "new map hospital",
+      "layout": {
+        "text-offset": [0, 1],
+        "text-size": {
+          "type": "interval",
+          "stops": [
+            [17, 9],
+            [19, 9]
+          ]
+        },
+        "text-font": ["IranSans-Noto"],
+        "symbol-placement": "point",
+        "icon-image": "empty-e71566",
+        "text-field": "{name}",
+        "icon-size": 1,
+        "text-anchor": "top",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": false,
+        "text-allow-overlap": false,
+        "text-ignore-placement": false,
+        "text-max-width": 30,
+        "symbol-spacing": 800
+      },
+      "paint": {
+        "text-color": "#2E0767",
+        "text-translate": [0, 0]
+      }
+    }
+  ]
+}
