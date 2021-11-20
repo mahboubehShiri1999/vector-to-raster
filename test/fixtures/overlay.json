@@ -3,7 +3,7 @@
     "parcels": {
       "type": "vector",
       "tiles": [
-        "host/share/e838832a-9255-4ee6-9f03-e9566f929e9a/api/tile/layers/e838832a-9255-4ee6-9f03-e9566f929e9a@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+        "host/share/overlayId/api/tile/layers/overlayId@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
       ]
 
     }
