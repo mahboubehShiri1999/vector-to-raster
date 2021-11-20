@@ -7,6 +7,7 @@ var axios = require("axios");
 var my_overlay = require('./test/fixtures/overlay.json');
 var BASE_LAYER_LINK = process.env.BASE_LAYER_LINK
 var OVERLAY_LINK = process.env.OVERLAY_LINK
+var OVERLAY_ID = process.env.OVERLAY_ID
 var base_layer = require(`./test/fixtures/min-poi.json`)
 var ov2_layer = require('./test/fixtures/ov2.json');
 
@@ -18,6 +19,7 @@ var base = JSON.parse(stringified);
 
 var str = JSON.stringify(my_overlay);
 str = str.replace('host', OVERLAY_LINK);
+str = str.replace('overlayId', OVERLAY_ID);
 var overlay = JSON.parse(str);
 
 
