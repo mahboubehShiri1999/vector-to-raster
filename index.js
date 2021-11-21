@@ -11,6 +11,7 @@ var OVERLAY_ID = process.env.OVERLAY_ID
 console.log(OVERLAY_ID)
 var base_layer = require(`./test/fixtures/min-poi.json`)
 var ov2_layer = require('./test/fixtures/ov2.json');
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 
 // var base = require(`./test/fixtures/${s}.json`)
