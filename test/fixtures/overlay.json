@@ -3,48 +3,49 @@
     "parcels": {
       "type": "vector",
       "tiles": [
-        "host/share/overlayId/api/tile/layers/overlayId@EPSG:3857@pbf/{z}/{y}/{x}.pbf"
+        "host/tile/layers/group/{z}/{y}/{x}.pbf"
       ]
-
     }
   },
   "layers": [
     {
       "id": "parcels_l",
       "source": "parcels",
-      "source-layer": "yazd_parcel_sina_shp",
+      "source-layer": "parcels",
       "type": "fill",
       "paint": {
         "fill-antialias": true,
         "fill-color": "#53c5db",
         "fill-opacity": 0.2
-      }
+      },
+      "minzoom": 14
     },
     {
       "id": "parcels_l-label",
       "source": "parcels",
-      "source-layer": "yazd_parcel_sina_shp",
+      "source-layer": "parcel_plates",
       "type": "symbol",
+      "minzoom": 16,
       "layout": {
         "text-offset": [
           0,
-          1
+          0
         ],
         "text-size": {
           "type": "interval",
           "stops": [
             [
-              17,
-              9
+              16,
+              5
             ],
             [
-              19,
-              9
+              17,
+              7
             ]
           ]
         },
         "text-font": [
-          "IranSans-Noto"
+          "Far_Traffic"
         ],
         "symbol-placement": "point",
         "text-field": [
@@ -57,19 +58,19 @@
             "locale": "fa-IR"
           }
         ],
-        "icon-size": 1,
         "text-anchor": "top",
         "icon-allow-overlap": false,
+        "icon-ignore-placement": false,
+        "text-allow-overlap": false,
+        "text-ignore-placement": false,
         "text-max-width": 30,
         "symbol-spacing": 800
       },
       "paint": {
         "text-color": "#2E0767",
-        "text-translate": [
-          0,
-          0
-        ]
+        "text-translate": [0, 0]
       }
     }
   ]
 }
+

@@ -21,7 +21,7 @@ var base = JSON.parse(stringified);
 
 var str = JSON.stringify(my_overlay);
 str = str.replace('host', OVERLAY_LINK);
-str = str.replace(/overlayId/g, OVERLAY_ID);
+// str = str.replace(/overlayId/g, OVERLAY_ID);
 console.log(str);
 var overlay = JSON.parse(str);
 
@@ -51,11 +51,11 @@ var options = {
                 callback(false, {data: data});
             }).catch(function (error) {
             console.log('base layer error')
-
             console.log(error.response)
             callback(true, {data: Buffer.from([])})
-            if (error.response.status === 404) return '404';
-            // console.log(error.response)
+
+            if ( error.response != null && error.response.status === 404) return '404';
+            console.log('exit')
         });
     },
     ratio: 1
@@ -64,9 +64,7 @@ var options = {
 var map = new mbgl.Map(options);
 
 
-
-
-    function getImage(callback, z, lon, lat, w, h, s) {
+function getImage(callback, z, lon, lat, w, h, s) {
     map.load(base);
     console.log('loading map')
 
@@ -82,6 +80,7 @@ var map = new mbgl.Map(options);
         map.addLayer(layer);
         console.log('layer added')
     });
+
 
 
     // Object.entries(ov2.sources).forEach((source) => {
@@ -178,7 +177,7 @@ app.get('/:z/:lon/:lat', (req, res) => {
 
 });
 
-const port = 4000;
+const port = 6000;
 app.listen(port, () => console.log(`listening on port ${port}`))
 
 
