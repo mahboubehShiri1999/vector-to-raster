@@ -177,7 +177,7 @@ app.get('/:z/:lon/:lat', (req, res) => {
 
 });
 
-const port = 4000;
+const port = 6000;
 app.listen(port, () => console.log(`listening on port ${port}`))
 
 
