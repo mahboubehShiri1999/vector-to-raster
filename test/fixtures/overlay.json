@@ -31,19 +31,17 @@
           0,
           0
         ],
-        "text-size": {
-          "type": "interval",
-          "stops": [
-            [
-              16,
-              5
-            ],
-            [
-              17,
-              7
-            ]
-          ]
-        },
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          15,
+          0,
+          16,
+          8,
+          18,
+          17
+        ],
         "text-font": [
           "Far_Traffic"
         ],
