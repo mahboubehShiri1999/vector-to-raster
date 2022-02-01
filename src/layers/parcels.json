@@ -3,7 +3,7 @@
     "parcels": {
       "type": "vector",
       "tiles": [
-        "host/tile/layers/group/{z}/{y}/{x}.pbf"
+        "hostAndUri/{z}/{y}/{x}.pbf"
       ]
     }
   },
