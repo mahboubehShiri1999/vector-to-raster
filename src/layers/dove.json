@@ -1,0 +1,2656 @@
+{
+  "version": 8,
+  "name": "Map.ir Vector XYZ Dove",
+  "metadata": {},
+  "center": [51.393, 35.6879],
+  "zoom": 10,
+  "bearing": 0,
+  "pitch": 0,
+  "sources": {
+    "group": {
+      "type": "vector",
+      "url": "host/vector/styles/main/mapir-xyz-group_layer.json"
+    }
+  },
+  "sprite": "host/vector/styles/main/sprite",
+  "glyphs": "host/vector/styles/main/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+
+
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color":
+        [
+          "interpolate",["linear"],["zoom"],
+          5,"#ededed",
+          10,"#ededed"
+
+        ]
+      }
+    },
+    {
+      "id": "sf-water",
+      "type": "fill",
+      "minzoom": 1,
+      "source": "group",
+      "source-layer": "mapir-water_polygons",
+      "paint": {
+        "fill-color":
+        ["interpolate",["linear"],["zoom"],
+          1,"#a5d3f3",
+          10,"#a5d3f3"
+        ]
+      ,
+        "fill-opacity":
+        ["interpolate",["linear"],["zoom"],
+          1,1,
+          2,1
+        ]
+      }
+    },
+    {
+      "id": "n_water_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 8,
+      "filter": [
+        "all",
+        ["in", "fclass", "water"],
+        ["in", "geom_type", "polygon"]
+      ],
+      "paint": {
+        "fill-color": "#30acd9",
+        "fill-opacity": 1
+      }
+    },
+    {
+      "id": "valley_l",
+      "type": "line",
+      "minzoom": 11,
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "filter": [
+        "all",
+        ["in", "fclass", "valley"],
+        ["in", "geom_type", "line"]
+      ],
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          11,2,
+          22,22
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          11,"#B0B34E"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          10,0,
+          11,1
+        ]
+      }
+    },
+    {
+      "id": "n_beach_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 17,
+      "filter": [
+        "all",
+        ["in", "fclass", "beach"],
+        ["in", "geom_type", "polygon"]
+      ],
+      "paint": {
+        "fill-color": "#dbe8cf  ",
+        "fill-opacity": 0.8
+      }
+    },
+    {
+      "id": "n_desert_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 5,
+      "filter": ["any", ["in", "fclass", "desert"]],
+      "paint": {
+        "fill-color": "#ededcf",
+        "fill-opacity": 0.8
+      }
+    },
+    {
+      "id": "sand_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 7,
+      "filter": ["all", ["in", "fclass", "sand"]],
+      "paint": {
+        "fill-color": "#EDD88E",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "n_park_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 9,
+      "filter": ["any", ["in", "fclass", "park"]],
+      "paint": {
+        "fill-color": "#b6e59e  ",
+        "fill-opacity": 0.8
+      }
+    },
+    {
+      "id": "grass_grassland_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 7,
+      "filter": [
+        "any",
+        ["in", "fclass", "grassland"],
+        ["in", "fclass", "grass"]
+      ],
+      "paint": {
+        "fill-color": "#BBD486",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "n_wood_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 5,
+      "filter": ["all", ["in", "fclass", "wood"]],
+      "paint": {
+        "fill-color": "#a8c38f",
+        "fill-opacity": 0.8
+      }
+    },
+    {
+      "id": "n_mangrove_forest_national_park_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 5,
+      "filter": [
+        "any",
+        ["in", "fclass", "mangrove_forest"],
+        ["in", "fclass", "national_park"]
+      ],
+      "paint": {
+        "fill-color": "#c7e0bd",
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "orchard_farm_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 8,
+      "filter": ["any", ["in", "fclass", "farm"], ["in", "fclass", "orchard"]],
+      "paint": {
+        "fill-color": "#B2CBA9",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "garden_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 10,
+      "filter": ["all", ["in", "fclass", "garden"]],
+      "paint": {
+        "fill-color": "#97C48E",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "meadow_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 9,
+      "filter": ["all", ["in", "fclass", "meadow"]],
+      "paint": {
+        "fill-color": "#C2D699",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "n_lake_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 5,
+      "filter": [
+        "all",
+        ["in", "fclass", "lake"],
+        ["in", "geom_type", "polygon"]
+      ],
+      "paint": {
+        "fill-color": "#75cff0",
+        "fill-opacity": 0.8
+      }
+    },
+    {
+      "id": "basin_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 11,
+      "filter": ["all", ["in", "fclass", "basin"]],
+      "paint": {
+        "fill-color": "#B8C78D",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "tree_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 13,
+      "filter": [
+        "all",
+        ["in", "fclass", "tree"],
+        ["in", "geom_type", "polygon"]
+      ],
+      "paint": {
+        "fill-color": "#B8C78D",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "continents",
+      "type": "symbol",
+      "minzoom": 0,
+      "maxzoom": 2,
+      "source": "group",
+      "source-layer": "continents",
+      "layout": {
+        "text-max-width": 6,
+        "text-field": "{title}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          0,10,
+          1,18,
+          2,18,
+          3,0
+        ]
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          0,0.8,
+          1,1,
+          2,1,
+          3,0
+        ]
+      ,
+        "text-color": "#1c1c1c",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          1,"#ffffff",
+          2,"#ffffff",
+          3,"#eeebe7"
+        ]
+      ,
+        "text-halo-width": 0.7,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "countries",
+      "type": "symbol",
+      "minzoom": 2,
+      "maxzoom": 20,
+      "source": "group",
+      "source-layer": "countries1",
+      "layout": {
+        "text-max-width": 6,
+        "text-field": "{title}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          2,12,
+          3,12,
+          4,14,
+          5,14
+        ]
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          2,0.9,
+          3,0.9,
+          4,0.8,
+          5,0.7
+        ]
+      ,
+        "text-color": "#1c1c1c",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          2,"#ffffff",
+          3,"#ffffff",
+          4,"#ffffff",
+          5,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.6,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "residential_landuse_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 9,
+      "filter": ["all", ["in", "fclass", "residential_landuse"]],
+      "paint": {
+        "fill-color": "#E3E0D4",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "quarry_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 9,
+      "filter": ["all", ["in", "fclass", "quarry"]],
+      "paint": {
+        "fill-color": "#DEDCD3",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "s_cemetery_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 10,
+      "filter": ["any", ["in", "fclass", "cemetery"]],
+      "paint": {
+        "fill-outline-color": "#495B6B",
+        "fill-color": "#819CAD  ",
+        "fill-opacity": 0.4
+      }
+    },
+    {
+      "id": "military_landuse_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 9,
+      "filter": ["all", ["in", "fclass", "military_landuse"]],
+      "paint": {
+        "fill-color": "#EAE4C1",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "commercial_landuse_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 10,
+      "filter": ["all", ["in", "fclass", "commercial_landuse"]],
+      "paint": {
+        "fill-color": "#D9E9EB",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "landfill_landuse_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 9,
+      "filter": ["all", ["in", "fclass", "landfill_landuse"]],
+      "paint": {
+        "fill-color": "#AFAA79",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "plant_nursery_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 11,
+      "filter": ["all", ["in", "fclass", "plant_nursery"]],
+      "paint": {
+        "fill-color": "#D5F3E4",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "n_river_l",
+      "type": "line",
+      "minzoom": 5,
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "filter": ["all", ["in", "fclass", "river"], ["in", "geom_type", "line"]],
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          9,0.2,
+          14,2,
+          22,22
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#7BBCE3",
+          10,"#7BBCE3"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          9,0,
+          10,1
+        ]
+      }
+    },
+    {
+      "id": "canal_l",
+      "type": "line",
+      "minzoom": 10,
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "filter": ["all", ["in", "fclass", "canal"], ["in", "geom_type", "line"]],
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          10,1,
+          22,22
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#75cff0"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          9,0,
+          10,1
+        ]
+      }
+    },
+    {
+      "id": "sf-country-border-bg",
+      "type": "line",
+      "minzoom": 1,
+      "source": "group",
+      "source-layer": "ne_10m_admin_0_boundary_lines_land",
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          1,"#ededed",
+          11,"#ededed"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          1,6,
+          11,12
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          1,0,
+          11,0.4
+        ]
+      ,
+        "line-translate": [0, 0],
+        "line-blur":
+        ["interpolate",["linear"],["zoom"],
+          1,0,
+          11,2
+        ]
+      }
+    },
+    {
+      "id": "sf-country-border",
+      "type": "line",
+      "minzoom": 1,
+      "source": "group",
+      "source-layer": "ne_10m_admin_0_boundary_lines_land",
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          1,"#c5c4c4",
+          11,"#9f9d9d"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          1,0.3,
+          11,2
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          1,0,
+          2,1
+        ]
+      }
+    },
+    {
+      "id": "ab-country-border-bg",
+      "type": "line",
+      "minzoom": 1,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_border",
+      "filter": ["any", ["in", "fclass", "country"]],
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          1,"#ededed",
+          11,"#ededed"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          1,6,
+          11,12
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          1,0,
+          11,0.4
+        ]
+      ,
+        "line-translate": [0, 0],
+        "line-blur":
+        ["interpolate",["linear"],["zoom"],
+          1,0,
+          11,2
+        ]
+      }
+    },
+    {
+      "id": "ab-country-border",
+      "type": "line",
+      "minzoom": 1,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_border",
+      "filter": ["any", ["in", "fclass", "country"]],
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          1, "#c5c4c4",
+          11,"#9f9d9d"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          1,0.3,
+          11,2
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          1,0,
+          2,1
+        ]
+      }
+    },
+    {
+      "id": "ab-country-maritime-border",
+      "type": "line",
+      "minzoom": 1,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_border",
+      "filter": ["any", ["in", "fclass", "maritime_country"]],
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          1,"#c5c4c4",
+          11,"#9f9d9d"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          1,0.3,
+          11,1
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          5,0,
+          7,0.5
+        ]
+      ,
+        "line-dasharray": [2, 4]
+      }
+    },
+    {
+      "id": "ab-province-border",
+      "type": "line",
+      "minzoom": 4,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_border",
+      "filter": ["any", ["in", "fclass", "province"]],
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          4,"#c5c4c4",
+          15,"#9f9d9d"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          4,0.3,
+          15,2
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          4,0,
+          5,1
+        ]
+      }
+    },
+    {
+      "id": "ab-province-maritime-border",
+      "type": "line",
+      "minzoom": 4,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_border",
+      "filter": ["any", ["in", "fclass", "maritime_province"]],
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          4,"#c5c4c4",
+          15,"#9f9d9d"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          4,0.3,
+          15,1
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          6,0,
+          8,0.5
+        ]
+      ,
+        "line-dasharray": [2, 4]
+      }
+    },
+    {
+      "id": "ab-county-border",
+      "type": "line",
+      "minzoom": 7,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_border",
+      "filter": ["any", ["in", "fclass", "county"]],
+      "layout": {
+        "line-join": "round",
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          7,"#c5c4c4",
+          17,"#9f9d9d"
+        ]
+      ,
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          7,0.3,
+          17,2
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          7,0,
+          8,1
+        ]
+      }
+    },
+    {
+      "id": "hw-construction",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "construction"]],
+      "minzoom": 14,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          12,"#ffffff",
+          13,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          14,0,
+          15,1
+        ]
+      ,
+        "line-dasharray": [1, 3]
+      }
+    },
+    {
+      "id": "hw-bridleway",
+      "type": "line",
+      "minzoom": 10,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "bridleway"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,26
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#D0C990",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          10,0,
+          11,1
+        ]
+      }
+    },
+    {
+      "id": "hw-raceway",
+      "type": "line",
+      "minzoom": 10,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "raceway"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,18
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          10,0,
+          11,1
+        ]
+      }
+    },
+    {
+      "id": "hw-path",
+      "type": "line",
+      "minzoom": 11,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "path"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,18
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          11,0,
+          12,1
+        ]
+      }
+    },
+    {
+      "id": "hw-living_street",
+      "type": "line",
+      "minzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "living_street"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,10
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0,
+          13,1
+        ]
+      }
+    },
+    {
+      "id": "hw-unclassified",
+      "type": "line",
+      "minzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "unclassified"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,10
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0,
+          13,1
+        ]
+      }
+    },
+    {
+      "id": "hw-track",
+      "type": "line",
+      "minzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "track"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,18
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0,
+          13,1
+        ]
+      }
+    },
+    {
+      "id": "hw-cycleway",
+      "type": "line",
+      "minzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "cycleway"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,10
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0,
+          13,1
+        ]
+      }
+    },
+    {
+      "id": "hw-restarea",
+      "type": "line",
+      "minzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "restarea"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,10
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          12,0,
+          13,1
+        ]
+      }
+    },
+    {
+      "id": "hw-bus_guideway",
+      "type": "line",
+      "minzoom": 14,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "bus_guideway"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,10
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          14,0,
+          15,1
+        ]
+      }
+    },
+    {
+      "id": "hw-proposed",
+      "type": "line",
+      "minzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "proposed"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          12,"#ffffff",
+          13,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          12,0,
+          13,1
+        ]
+      ,
+        "line-dasharray": [1, 3]
+      }
+    },
+    {
+      "id": "hw-escape",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "escape"]],
+      "minzoom": 8,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          8,"blue",
+          9,"blue"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          8,0,
+          13,1
+        ]
+      ,
+        "line-dasharray": [1, 3]
+      }
+    },
+    {
+      "id": "hw-footway",
+      "type": "line",
+      "minzoom": 14,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "footway"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          14,0.5,
+          18,6
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          14,0,
+          15,1
+        ]
+      }
+    },
+    {
+      "id": "hw-steps",
+      "type": "line",
+      "minzoom": 14,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "steps"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          14,0.5,
+          18,6
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          14,0,
+          15,1
+        ]
+      ,
+        "line-dasharray": [1, 3]
+      }
+    },
+    {
+      "id": "hw-pedestrian",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "pedestrian"]],
+      "minzoom": 14,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["linear"],["zoom"],
+          14,0.5,
+          18,6
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["linear"],["zoom"],
+          14,0,
+          15,1
+        ]
+      }
+    },
+    {
+      "id": "hw-road",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "road"]],
+      "minzoom": 14,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          13,0.5,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["exponential",1.5],["zoom"],
+          9,"#ffffff",
+          14,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          14,0,
+          15,1
+        ]
+      }
+    },
+    {
+      "id": "hw-service",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "service"]],
+      "minzoom": 14,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          13,0.5,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#d8e3e9",
+          14, "#d8e3e9"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          14,0,
+          15,1
+        ]
+      }
+    },
+    {
+      "id": "hw-residential",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "residential"]],
+      "minzoom": 13,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          13,0.5,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#d8e3e9",
+          14, "#d8e3e9"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          13,0,
+          14,1
+        ]
+      }
+    },
+    {
+      "id": "hw-tertiary_link",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "tertiary_link"]],
+      "minzoom": 9,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0.5,
+          14,2,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          10,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          9,0,
+          10,1
+        ]
+      }
+    },
+    {
+      "id": "hw-secondary_link",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "secondary_link"]],
+      "minzoom": 9,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0.5,
+          14,2,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          10,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          9,0,
+          10,1
+        ]
+      }
+    },
+    {
+      "id": "hw-primary_link",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "primary_link"]],
+      "minzoom": 7,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0.5,
+          14,2,
+          18,12
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          8,"#ffffff",
+          9,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          7,0,
+          8,1
+        ]
+      }
+    },
+    {
+      "id": "hw-trunk_link",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "trunk_link"]],
+      "minzoom": 10,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0.5,
+          14,2,
+          18,18
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          8,"#ffffff",
+          9,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          10,0,
+          11,1
+        ]
+      }
+    },
+    {
+      "id": "hw-motorway_link",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "motorway_link"]],
+      "minzoom": 10,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          12,0.5,
+          14,2,
+          18,18
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          8,"#ffffff",
+          9,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          10,0,
+          11,1
+        ]
+      }
+    },
+    {
+      "id": "hw-tertiary",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "tertiary"]],
+      "minzoom": 11,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,26
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          11,"#ffffff",
+          12,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          11,0,
+          12,1
+        ]
+      }
+    },
+    {
+      "id": "hw-secondary",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "secondary"]],
+      "minzoom": 9,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          8.5,0.5,
+          10,0.75,
+          18,26
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          10,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          9,0,
+          10,1
+        ]
+      }
+    },
+    {
+      "id": "hw-primary",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "primary"]],
+      "minzoom": 6,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          5,0.3,
+          18,30
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          8,"#ffffff",
+          9,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          6,0,
+          7,1
+        ]
+      }
+    },
+    {
+      "id": "hw-trunk",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "trunk"]],
+      "minzoom": 5,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          6,0.3,
+          18,30
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          6,"#ffffff",
+          14,"#ffffff",
+          15,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          5,0,
+          6,1
+        ]
+      }
+    },
+    {
+      "id": "hw-motorway",
+      "type": "line",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "motorway"]],
+      "minzoom": 5,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-width":
+        ["interpolate",["exponential",1.5],["zoom"],
+          6,0.75,
+          18,44
+        ]
+      ,
+        "line-color":
+        ["interpolate",["linear"],["zoom"],
+          6,"#ffffff",
+          15,"#ffffff",
+          16,"#ffffff"
+        ]
+      ,
+        "line-opacity":
+        ["interpolate",["exponential",1.5],["zoom"],
+          5,0,
+          6,1
+        ]
+      }
+    },
+    {
+      "id": "e_university_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 15,
+      "filter": ["any", ["in", "fclass", "university"]],
+      "paint": {
+        "fill-outline-color": "#DCA552",
+        "fill-color": "#DCA552  ",
+        "fill-opacity": 0.2
+      }
+    },
+    {
+      "id": "s_dormitory_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 17,
+      "filter": ["any", ["in", "fclass", "dormitory"]],
+      "paint": {
+        "fill-outline-color": "#495B6B",
+        "fill-color": "#819CAD  ",
+        "fill-opacity": 0.4
+      }
+    },
+    {
+      "id": "ruins_bunker_building_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 13,
+      "filter": [
+        "any",
+        ["in", "fclass", "building"],
+        ["in", "fclass", "bunker"],
+        ["in", "fclass", "ruins"]
+      ],
+      "paint": {
+        "fill-color": "#E3E0D4",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "under_construction_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 13,
+      "filter": ["all", ["in", "fclass", "under_construction"]],
+      "paint": {
+        "fill-color": "#E0E0E0",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "garage_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 12,
+      "filter": ["all", ["in", "fclass", "garage"]],
+      "paint": {
+        "fill-color": "#D2D1D6",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "warehouse_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 13,
+      "filter": ["all", ["in", "fclass", "warehouse"]],
+      "paint": {
+        "fill-color": "#E0E0E0",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "s_hotel_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 14,
+      "filter": ["any", ["in", "fclass", "hotel"]],
+      "paint": {
+        "fill-outline-color": "#495B6B",
+        "fill-color": "#819CAD  ",
+        "fill-opacity": 0.4
+      }
+    },
+    {
+      "id": "r_mosque_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 15,
+      "filter": ["any", ["in", "fclass", "mosque"]],
+      "paint": {
+        "fill-outline-color": "#5BC96B",
+        "fill-color": "#5BC96B  ",
+        "fill-opacity": 0.2
+      }
+    },
+    {
+      "id": "h_hospital_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 13,
+      "filter": ["all", ["in", "fclass", "hospital"]],
+      "paint": {
+        "fill-outline-color": "#F16161",
+        "fill-color": "#F16161  ",
+        "fill-opacity": 0.3
+      }
+    },
+    {
+      "id": "train_station_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 13,
+      "filter": ["all", ["in", "fclass", "train_station"]],
+      "paint": {
+        "fill-color": "#64B5F6",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "office_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 13,
+      "filter": ["all", ["in", "fclass", "office"]],
+      "paint": {
+        "fill-color": "#BA68C8",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "s_bank_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 18,
+      "filter": ["any", ["in", "fclass", "bank"]],
+      "paint": {
+        "fill-outline-color": "#495B6B",
+        "fill-color": "#819CAD  ",
+        "fill-opacity": 0.4
+      }
+    },
+    {
+      "id": "e_school_college_a",
+      "source": "group",
+      "source-layer": "mapir-geoserver_poi_area_v3",
+      "type": "fill",
+      "minzoom": 15,
+      "filter": [
+        "any",
+        ["in", "fclass", "school"],
+        ["in", "fclass", "college"]
+      ],
+      "paint": {
+        "fill-outline-color": "#DCA552",
+        "fill-color": "#DCA552  ",
+        "fill-opacity": 0.2
+      }
+    },
+    {
+      "id": "ap-country",
+      "type": "symbol",
+      "minzoom": 1,
+      "maxzoom": 6,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": ["any", ["in", "fclass", "country"]],
+      "layout": {
+        "text-max-width": 6,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          1,10,
+          5,44,
+          6,0
+        ]
+      ,
+        "visibility": "none",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          1,0.6,
+          2,0.6,
+          3,0.8,
+          4,0.6,
+          5,0.4,
+          6,0
+        ]
+      ,
+        "text-color": "#1f1d13",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          1,"#ffffff",
+          5,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "ap-province",
+      "type": "symbol",
+      "minzoom": 5,
+      "maxzoom": 8,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": ["any", ["in", "fclass", "province"]],
+      "layout": {
+        "text-max-width": 6,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          5,14,
+          7,25,
+          8,0
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          5,0.9,
+          6,0.9,
+          7,0.7,
+          8,0
+        ]
+      ,
+        "text-color": "#1f1d13",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          5,"#ffffff",
+          7,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "ap-county",
+      "type": "symbol",
+      "minzoom": 7,
+      "maxzoom": 10,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": ["any", ["in", "fclass", "county"]],
+      "layout": {
+        "text-max-width": 100,
+        "text-field": "{osm_name}",
+        "visibility": "none",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          7,10,
+          9,12,
+          10,0
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          7,0.5,
+          8,0.5,
+          9,0.5,
+          10,0
+        ]
+      ,
+        "text-color": "#1f1d13",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          7,"#ffffff",
+          9,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "ap-tehran",
+      "type": "symbol",
+      "minzoom": 6,
+      "maxzoom": 10,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": [
+        "all",
+        ["==", "fclass", "city"],
+        [">=", "population", 4000000],
+        ["!=", "population", "[null]"]
+      ],
+      "layout": {
+        "icon-image": "target-15",
+        "icon-size": 0.5,
+        "text-max-width": 30,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          6,14,
+          9,16
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "icon-opacity":
+        ["interpolate",["linear"],["zoom"],
+          6,1,
+          9,1,
+          10,0
+        ]
+      ,
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          6,1,
+          9,1
+        ]
+      ,
+        "text-color": "#0a0906",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          6,"#ffffff",
+          9,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1,
+        "text-translate": [0, -12]
+      }
+    },
+    {
+      "id": "ap-big-city",
+      "type": "symbol",
+      "minzoom": 6,
+      "maxzoom": 10,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": [
+        "all",
+        ["==", "fclass", "city"],
+        ["<=", "population", 4000000],
+        [">=", "population", 1200000],
+        ["!=", "population", "[null]"]
+      ],
+      "layout": {
+        "icon-image": "circle-11",
+        "icon-size": 0.65,
+        "text-max-width": 30,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          6,14,
+          9,16,
+          10,0
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "icon-opacity":
+        ["interpolate",["linear"],["zoom"],
+          6,1,
+          9,1
+        ]
+      ,
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          6,1,
+          9,1
+        ]
+      ,
+        "text-color": "#0a0906",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          6,"#ffffff",
+          9,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1,
+        "text-translate": [0, -12]
+      }
+    },
+    {
+      "id": "ap-city",
+      "type": "symbol",
+      "minzoom": 7,
+      "maxzoom": 11,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": [
+        "all",
+        ["==", "fclass", "city"],
+        ["<=", "population", 1200000],
+        [">=", "population", 20000],
+        ["!=", "population", "[null]"]
+      ],
+      "layout": {
+        "icon-image": "circle-11",
+        "icon-size": 0.4,
+        "text-max-width": 30,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          7,12,
+          9,14,
+          10,14,
+          11,0
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "icon-opacity":
+        ["interpolate",["linear"],["zoom"],
+          7,0.8,
+          9,0.8,
+          10,0.8
+        ]
+      ,
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          7,0.8,
+          9,0.8,
+          10,0.8
+        ]
+      ,
+        "text-color": "#0a0906",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          7,"#ffffff",
+          9,"#ffffff",
+          10,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1,
+        "text-translate": [0, -12]
+      }
+    },
+    {
+      "id": "ap-little-city",
+      "type": "symbol",
+      "minzoom": 9,
+      "maxzoom": 11,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": [
+        "any",
+        ["==", "fclass", "city"],
+        ["<", "population", 20000],
+        ["==", "population", "null"]
+      ],
+      "layout": {
+        "text-max-width": 10,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          9,10,
+          10,10,
+          11,10,
+          12,0
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          9,0.5,
+          10,0.5,
+          11,0.5,
+          12,0
+        ]
+      ,
+        "text-color": "#0a0906",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          10,"#ffffff",
+          11,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "ap-district",
+      "type": "symbol",
+      "minzoom": 9,
+      "maxzoom": 11,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": ["any", ["in", "fclass", "district"]],
+      "layout": {
+        "text-max-width": 6,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          9,15,
+          10,18,
+          11,0
+        ]
+      ,
+        "visibility": "none",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          9,0.8,
+          10,0.8,
+          11,0
+        ]
+      ,
+        "text-color": "#4F6BA2",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "ap-ruraldistrict",
+      "type": "symbol",
+      "minzoom": 9,
+      "maxzoom": 13,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": ["any", ["in", "fclass", "ruraldistrict"]],
+      "layout": {
+        "text-max-width": 60,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          9,8,
+          12,12,
+          13,0
+        ]
+      ,
+        "visibility": "none",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          9,0.6,
+          10,0.6,
+          12,0.6,
+          13,0
+        ]
+      ,
+        "text-color": "#1f1d13",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          9,"#ffffff",
+          12,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "ap-suburb",
+      "type": "symbol",
+      "minzoom": 10,
+      "maxzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": ["any", ["in", "fclass", "suburb"]],
+      "layout": {
+        "text-max-width": 60,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          10,14,
+          12,0,
+          13,0
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          10,0.8,
+          11,0.8,
+          12,0,
+          13,0
+        ]
+      ,
+        "text-color": "#3c3c3c",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          10,"#ffffff",
+          11,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "ap-neighbourhood",
+      "type": "symbol",
+      "minzoom": 11,
+      "maxzoom": 14,
+      "source": "group",
+      "source-layer": "mapir-geoserver_adminestrative_point",
+      "filter": ["any", ["in", "fclass", "neighbourhood"]],
+      "layout": {
+        "text-max-width": 6,
+        "text-field": "{osm_name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          11,8,
+          13,14,
+          14,0
+        ]
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          11,0.8,
+          12,0.8,
+          13,0.8,
+          14,0
+        ]
+      ,
+        "text-color": "#1c1c1c",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          11,"#ffffff",
+          12,"#ffffff",
+          13,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "mv_village",
+      "type": "symbol",
+      "minzoom": 12,
+      "maxzoom": 15,
+      "source": "group",
+      "source-layer": "mv_village",
+      "layout": {
+        "text-max-width": 60,
+        "text-field": "{name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          12,8,
+          13,8,
+          15,8,
+          16,0
+        ]
+      ,
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": true,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          12,0.5,
+          13,0.5,
+          15,0.5,
+          16,0
+        ]
+      ,
+        "text-color": "#0a0906",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          12,"#ffffff",
+          13,"#ffffff",
+          15,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "hw-secondary-tertiary",
+      "type": "symbol",
+      "minzoom": 12,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": [
+        "any",
+        ["in", "fclass", "secondary"],
+        ["in", "fclass", "tertiary"],
+        ["in", "fclass", "residential"],
+        ["in", "fclass", "service"],
+        ["in", "fclass", "road"],
+        ["in", "fclass", "living_street"]
+      ],
+      "layout": {
+        "symbol-placement": "line",
+        "text-rotation-alignment": "map",
+        "text-pitch-alignment": "viewport",
+        "text-max-angle": 30,
+        "text-max-width": 300,
+        "text-field": "{name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          12,10,
+          20,14
+        ]
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          12,0.7
+        ]
+      ,
+        "text-color": "#1c1c1c",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          2,"#ffffff",
+          3,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "hw-primary-s",
+      "type": "symbol",
+      "minzoom": 9,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": ["any", ["in", "fclass", "primary"]],
+      "layout": {
+        "symbol-placement": "line",
+        "text-rotation-alignment": "map",
+        "text-pitch-alignment": "viewport",
+        "text-max-angle": 30,
+        "text-max-width": 300,
+        "text-field": "{name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          9,12,
+          16,16
+        ]
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          8,0.7
+        ]
+      ,
+        "text-color": "#1c1c1c",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          2,"#ffffff",
+          3,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "hw-motorway-trunk",
+      "type": "symbol",
+      "minzoom": 8,
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "filter": [
+        "any",
+        ["in", "fclass", "motorway"],
+        ["in", "fclass", "trunk"]
+      ],
+      "layout": {
+        "symbol-placement": "line",
+        "text-rotation-alignment": "map",
+        "text-pitch-alignment": "viewport",
+        "text-max-angle": 30,
+        "text-max-width": 300,
+        "text-field": "{name}",
+        "text-font": ["IranSans-Noto"],
+        "text-size":
+        ["interpolate",["linear"],["zoom"],
+          8,12,
+          16,16
+        ]
+      },
+      "paint": {
+        "text-opacity":
+        ["interpolate",["linear"],["zoom"],
+          8,0.7
+        ]
+      ,
+        "text-color": "#1c1c1c",
+        "text-halo-color":
+        ["interpolate",["linear"],["zoom"],
+          2,"#ffffff",
+          3,"#ffffff"
+        ]
+      ,
+        "text-halo-width": 0.3,
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "tr-bus_station",
+      "type": "symbol",
+      "source": "group",
+      "source-layer": "mv_pois",
+      "minzoom": 17,
+      "filter": ["all", ["in", "fclass", "bus_station"]],
+      "layout": {
+        "text-offset": [0, 1.8],
+        "text-size":
+        ["interpolate",["exponential",1.5],["zoom"],
+          17,9,
+          19,9
+        ]
+      ,
+        "text-font": ["IranSans-Noto"],
+        "symbol-placement": "point",
+        "text-field": "{name}",
+        "icon-image": "terminal-20",
+        "text-anchor": "top",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": false,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true,
+        "text-max-width": 30,
+        "symbol-spacing": 800
+      },
+      "paint": {
+        "text-color": "#495EC4",
+        "text-translate": [0, 0]
+      }
+    },
+    {
+      "id": "tr-bus_stop",
+      "type": "symbol",
+      "source": "group",
+      "source-layer": "mv_pois",
+      "minzoom": 15,
+      "filter": ["all", ["in", "fclass", "bus_stop"]],
+      "layout": {
+        "text-offset": [0, 1.8],
+        "text-size":
+        ["interpolate",["exponential",1.5],["zoom"],
+          17,0,
+          18,9,
+          19,9
+        ]
+      ,
+        "text-font": ["IranSans-Noto"],
+        "symbol-placement": "point",
+        "text-field": "{name}",
+        "icon-image": "bus-station-20",
+        "text-anchor": "top",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": false,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true,
+        "text-max-width": 30,
+        "symbol-spacing": 800
+      },
+      "paint": {
+        "text-color": "#1c1c1c",
+        "text-translate": [0, 0]
+      }
+    },
+    {
+      "id": "tr-metro",
+      "type": "symbol",
+      "source": "group",
+      "source-layer": "mv_pois",
+      "minzoom": 13,
+      "filter": ["all", ["in", "fclass", "metro"]],
+      "layout": {
+        "text-offset": [0, 1.8],
+        "text-size":
+        ["interpolate",["exponential",1.5],["zoom"],
+          13,9,
+          20,9
+        ]
+      ,
+        "text-font": ["IranSans-Noto"],
+        "symbol-placement": "point",
+        "text-field": "{name}",
+        "icon-image": "metro-station-20",
+        "text-anchor": "top",
+        "icon-allow-overlap": false,
+        "icon-ignore-placement": false,
+        "text-allow-overlap": false,
+        "text-ignore-placement": true,
+        "text-max-width": 30,
+        "symbol-spacing": 800
+      },
+      "paint": {
+        "text-color": "#1c1c1c",
+        "text-translate": [0, 0]
+      }
+    },
+    {
+      "id": "direction",
+      "type": "symbol",
+      "source": "group",
+      "source-layer": "mapir-geoserver_ways",
+      "minzoom": 15,
+      "maxzoom": 20,
+      "filter": ["all", ["in", "oneway", "yes"]],
+      "layout": {
+        "text-offset": [0.5, 0.5],
+        "text-pitch-alignment": "map",
+        "symbol-placement": "line",
+        "text-allow-overlap": false,
+        "text-optional": true,
+        "text-justify": "center",
+        "icon-image": "long-arrow-pointing-to-the-right",
+        "text-max-angle": 20,
+        "symbol-spacing": 400,
+        "text-padding": 10
+      },
+      "paint": {
+        "text-halo-width": 1,
+        "text-halo-color": "#FFFFFF",
+        "text-halo-blur": 0.7,
+        "text-color": "#000000"
+      }
+    }
+  ],
+  "created": "2018-11-24T10:00:57.017Z",
+  "id": "cjovab1r7apq22sl8xzlw5du3",
+  "modified": "2020-07-06",
+  "owner": "Map.ir",
+  "visibility": "private",
+  "draft": false
+}
